@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ubuntu/proj/packageindex/Package.h
+string
+-
+list
+-
+iostream
+-
+
+/home/ubuntu/proj/packageindex/Package_test.cpp
+Package.h
+/home/ubuntu/proj/packageindex/Package.h
+memory
+-
+gtest/gtest.h
+-
+
