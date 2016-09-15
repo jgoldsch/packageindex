@@ -473,6 +473,19 @@ NightlyUpdate/fast:
 .PHONY : NightlyUpdate/fast
 
 #=============================================================================
+# Target rules for targets named runPackageTableTests
+
+# Build rule for target.
+runPackageTableTests: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 runPackageTableTests
+.PHONY : runPackageTableTests
+
+# fast build rule for target.
+runPackageTableTests/fast:
+	$(MAKE) -f CMakeFiles/runPackageTableTests.dir/build.make CMakeFiles/runPackageTableTests.dir/build
+.PHONY : runPackageTableTests/fast
+
+#=============================================================================
 # Target rules for targets named runPackageTests
 
 # Build rule for target.
@@ -484,6 +497,30 @@ runPackageTests: cmake_check_build_system
 runPackageTests/fast:
 	$(MAKE) -f CMakeFiles/runPackageTests.dir/build.make CMakeFiles/runPackageTests.dir/build
 .PHONY : runPackageTests/fast
+
+PackageTable_test.o: PackageTable_test.cpp.o
+.PHONY : PackageTable_test.o
+
+# target to build an object file
+PackageTable_test.cpp.o:
+	$(MAKE) -f CMakeFiles/runPackageTableTests.dir/build.make CMakeFiles/runPackageTableTests.dir/PackageTable_test.cpp.o
+.PHONY : PackageTable_test.cpp.o
+
+PackageTable_test.i: PackageTable_test.cpp.i
+.PHONY : PackageTable_test.i
+
+# target to preprocess a source file
+PackageTable_test.cpp.i:
+	$(MAKE) -f CMakeFiles/runPackageTableTests.dir/build.make CMakeFiles/runPackageTableTests.dir/PackageTable_test.cpp.i
+.PHONY : PackageTable_test.cpp.i
+
+PackageTable_test.s: PackageTable_test.cpp.s
+.PHONY : PackageTable_test.s
+
+# target to generate assembly for a file
+PackageTable_test.cpp.s:
+	$(MAKE) -f CMakeFiles/runPackageTableTests.dir/build.make CMakeFiles/runPackageTableTests.dir/PackageTable_test.cpp.s
+.PHONY : PackageTable_test.cpp.s
 
 Package_test.o: Package_test.cpp.o
 .PHONY : Package_test.o
@@ -545,8 +582,12 @@ help:
 	@echo "... NightlyUpdate"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... runPackageTableTests"
 	@echo "... runPackageTests"
 	@echo "... test"
+	@echo "... PackageTable_test.o"
+	@echo "... PackageTable_test.i"
+	@echo "... PackageTable_test.s"
 	@echo "... Package_test.o"
 	@echo "... Package_test.i"
 	@echo "... Package_test.s"

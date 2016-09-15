@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ubuntu/proj/packageindex/Package.h
+string
+-
+list
+-
+iostream
+-
+
+/home/ubuntu/proj/packageindex/PackageTable.h
+Package.h
+/home/ubuntu/proj/packageindex/Package.h
+unordered_map
+-
+list
+-
+assert.h
+-
+
+/home/ubuntu/proj/packageindex/PackageTable_test.cpp
+PackageTable.h
+/home/ubuntu/proj/packageindex/PackageTable.h
+memory
+-
+string
+-
+list
+-
+gtest/gtest.h
+-
+

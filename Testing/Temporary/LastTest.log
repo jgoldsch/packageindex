@@ -1,28 +1,65 @@
-Start testing: Sep 14 02:02 UTC
+Start testing: Sep 15 00:19 UTC
 ----------------------------------------------------------
-1/1 Testing: runPackageTests
-1/1 Test: runPackageTests
+1/2 Testing: runPackageTests
+1/2 Test: runPackageTests
 Command: "/home/ubuntu/proj/packageindex/runPackageTests"
 Directory: /home/ubuntu/proj/packageindex
-"runPackageTests" start time: Sep 14 02:02 UTC
+"runPackageTests" start time: Sep 15 00:19 UTC
 Output:
 ----------------------------------------------------------
-[==========] Running 1 test from 1 test case.
+[==========] Running 6 tests from 1 test case.
 [----------] Global test environment set-up.
-[----------] 1 test from PackageTest
+[----------] 6 tests from PackageTest
 [ RUN      ] PackageTest.SourceNode
-[       OK ] PackageTest.SourceNode (0 ms)
-[----------] 1 test from PackageTest (0 ms total)
+[       OK ] PackageTest.SourceNode (1 ms)
+[ RUN      ] PackageTest.SinkNode
+[       OK ] PackageTest.SinkNode (0 ms)
+[ RUN      ] PackageTest.AddDependency
+[       OK ] PackageTest.AddDependency (0 ms)
+[ RUN      ] PackageTest.AddSelfDependency
+[       OK ] PackageTest.AddSelfDependency (0 ms)
+[ RUN      ] PackageTest.AddDependent
+[       OK ] PackageTest.AddDependent (0 ms)
+[ RUN      ] PackageTest.RemoveDependency
+[       OK ] PackageTest.RemoveDependency (0 ms)
+[----------] 6 tests from PackageTest (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test case ran. (0 ms total)
-[  PASSED  ] 1 test.
+[==========] 6 tests from 1 test case ran. (1 ms total)
+[  PASSED  ] 6 tests.
 <end of output>
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"runPackageTests" end time: Sep 14 02:02 UTC
+"runPackageTests" end time: Sep 15 00:19 UTC
 "runPackageTests" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Sep 14 02:02 UTC
+2/2 Testing: runPackageTableTests
+2/2 Test: runPackageTableTests
+Command: "/home/ubuntu/proj/packageindex/runPackageTableTests"
+Directory: /home/ubuntu/proj/packageindex
+"runPackageTableTests" start time: Sep 15 00:19 UTC
+Output:
+----------------------------------------------------------
+[==========] Running 2 tests from 1 test case.
+[----------] Global test environment set-up.
+[----------] 2 tests from PackageTest
+[ RUN      ] PackageTest.EmptyLookup
+[       OK ] PackageTest.EmptyLookup (0 ms)
+[ RUN      ] PackageTest.SourceInsert
+[       OK ] PackageTest.SourceInsert (0 ms)
+[----------] 2 tests from PackageTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 2 tests from 1 test case ran. (0 ms total)
+[  PASSED  ] 2 tests.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"runPackageTableTests" end time: Sep 15 00:19 UTC
+"runPackageTableTests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Sep 15 00:19 UTC

@@ -72,9 +72,17 @@ public:
     return 0;
   }
 
+  void removeAllDependencies() {
+    while (!m_dependencies.empty()) {
+      Package *p = m_dependencies.front();
+      m_dependencies.pop_front();
+      (void)p->removeDependent(this);
+    }
+  }
+
   void printDependencies() {
     cout << "Direct dependencies for " << m_name << endl;
-    for (Package *p : m_dependents) {
+    for (Package *p : m_dependencies) {
       cout << p->getName() << endl;
     }
   }
