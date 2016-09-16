@@ -80,6 +80,27 @@ public:
     }
   }
 
+  /**
+   * Search dependencies (direct and otherwise) for a package name.
+   * return a pointer to a found package matching the input name
+   * return nullptr if no package is found in the graph
+   */
+  Package * search(string inName) {
+    Package *target = nullptr;
+
+    if (inName == getName()) {
+      return this;
+    } else {
+      for (auto p : m_dependencies) {
+	if ((target = p->search(inName)) != nullptr) {
+	  return target;
+	}
+      }
+    }
+
+    return nullptr;
+  }
+
   void printDependencies() {
     cout << "Direct dependencies for " << m_name << endl;
     for (Package *p : m_dependencies) {

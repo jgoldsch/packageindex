@@ -94,24 +94,50 @@ TEST(PackageTest, RemoveDependency) {
   ASSERT_TRUE(p->isSource());
   // package is a sink with no dependents
   ASSERT_TRUE(p->isSink());
-
 }
 
-/*
-TEST(PackageTest, RemoveDependencyFail) {
+
+TEST(PackageTest, SearchTest) {
   Package *pA = new Package("A");
   Package *pB = new Package("B");
   Package *pC = new Package("C");
-
   int err = pA->addDependency(pB);
   ASSERT_EQ(err, 0);
-  err = pB->addDependency(pC);
+  err = pA->addDependency(pC);
   ASSERT_EQ(err, 0);
 
-  // Our Graph:  A->B->C
-
+  ASSERT_EQ((pA->search("C"))->getName(), "C");
+  ASSERT_EQ((pA->search("B"))->getName(), "B");
+  ASSERT_EQ((pA->search("A"))->getName(), "A");
+  ASSERT_EQ(pA->search("foo"), nullptr);
+  delete pA;
+  delete pB;
+  delete pC;
 }
-*/
+
+TEST(PackageTest, DeepSearchTest) {
+  Package *pA = new Package("A");
+  int i,j;
+  list<Package *> testobjs;
+  for (i = 0; i < 10; ++i) {
+    Package *newP = new Package((to_string(i)));
+    testobjs.push_back(newP);
+    pA->addDependency(newP);
+    for (j=100; j < 110; ++j) {
+      Package *newnewP = new Package((to_string(j*i+1)));
+      testobjs.push_back(newnewP);
+      newP->addDependency(newnewP);
+    }
+  }
+
+  ASSERT_EQ(pA->search(to_string(901))->getName(), to_string(901));
+  for (auto p : testobjs) {
+    delete p;
+  }
+  delete pA;
+}
+
+
 
 int main(int argc, char **argv) {
   testing::InitGoogleTest(&argc, argv);

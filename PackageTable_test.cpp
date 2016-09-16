@@ -49,8 +49,40 @@ TEST(PackageTest, InsertDependsMet) {
   deps.push_back("bar");
   err = PT->insert("foo", deps);
   ASSERT_EQ(err, 0);
-  PT->print();
 }
+
+TEST(PackageTest, InsertUpdate) {
+  auto PT = make_shared<PackageTable>();
+  list<string> deps;
+  ASSERT_EQ(PT->insert("bar", deps), 0);
+  ASSERT_EQ(PT->insert("baz", deps), 0);
+  deps.push_back("bar");
+  ASSERT_EQ(PT->insert("foo", deps), 0);
+  // Graph  foo->bar   baz
+
+  deps.push_back("baz");
+  ASSERT_EQ(PT->insert("foo", deps), 0);
+  // Graph foo->bar|baz
+}
+
+TEST(PackageTest, InsertUpdateCircular) {
+  auto PT = make_shared<PackageTable>();
+  list<string> deps;
+  ASSERT_EQ(PT->insert("baz", deps), 0);
+  deps.push_back("baz");
+  ASSERT_EQ(PT->insert("bar", deps), 0);
+  deps.clear();
+  deps.push_back("bar");
+  ASSERT_EQ(PT->insert("foo", deps), 0);
+  // Graph  foo->bar->baz
+
+  deps.clear();
+  deps.push_back("foo");
+  // Try to add circular dependency like:
+  // Graph foo->bar->baz->foo
+  ASSERT_EQ(PT->insert("baz", deps), -1);
+}
+  
 
 TEST(PackageTest, RemoveMissing) {
   auto PT = make_shared<PackageTable>();
@@ -81,11 +113,11 @@ TEST(PackageTest, RemoveSinks) {
   PT->print();
   err = PT->remove("foo");
   ASSERT_EQ(err, 0);
-  PT->print();
   err = PT->remove("bar");
   ASSERT_EQ(err, 0);
+  PT->print();
 }
- 
+
 int main(int argc, char **argv) {
   testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
