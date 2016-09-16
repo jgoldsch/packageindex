@@ -10,7 +10,7 @@ class Package
   list<Package *> m_dependents;
   list<Package *> m_dependencies;
 
-public:
+ public:
   Package(string name) : m_name(name) {}
 
   ~Package() {

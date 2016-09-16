@@ -498,6 +498,19 @@ runPackageTests/fast:
 	$(MAKE) -f CMakeFiles/runPackageTests.dir/build.make CMakeFiles/runPackageTests.dir/build
 .PHONY : runPackageTests/fast
 
+#=============================================================================
+# Target rules for targets named runTokenizerTests
+
+# Build rule for target.
+runTokenizerTests: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 runTokenizerTests
+.PHONY : runTokenizerTests
+
+# fast build rule for target.
+runTokenizerTests/fast:
+	$(MAKE) -f CMakeFiles/runTokenizerTests.dir/build.make CMakeFiles/runTokenizerTests.dir/build
+.PHONY : runTokenizerTests/fast
+
 PackageTable_test.o: PackageTable_test.cpp.o
 .PHONY : PackageTable_test.o
 
@@ -546,6 +559,30 @@ Package_test.cpp.s:
 	$(MAKE) -f CMakeFiles/runPackageTests.dir/build.make CMakeFiles/runPackageTests.dir/Package_test.cpp.s
 .PHONY : Package_test.cpp.s
 
+Tokenizer_test.o: Tokenizer_test.cpp.o
+.PHONY : Tokenizer_test.o
+
+# target to build an object file
+Tokenizer_test.cpp.o:
+	$(MAKE) -f CMakeFiles/runTokenizerTests.dir/build.make CMakeFiles/runTokenizerTests.dir/Tokenizer_test.cpp.o
+.PHONY : Tokenizer_test.cpp.o
+
+Tokenizer_test.i: Tokenizer_test.cpp.i
+.PHONY : Tokenizer_test.i
+
+# target to preprocess a source file
+Tokenizer_test.cpp.i:
+	$(MAKE) -f CMakeFiles/runTokenizerTests.dir/build.make CMakeFiles/runTokenizerTests.dir/Tokenizer_test.cpp.i
+.PHONY : Tokenizer_test.cpp.i
+
+Tokenizer_test.s: Tokenizer_test.cpp.s
+.PHONY : Tokenizer_test.s
+
+# target to generate assembly for a file
+Tokenizer_test.cpp.s:
+	$(MAKE) -f CMakeFiles/runTokenizerTests.dir/build.make CMakeFiles/runTokenizerTests.dir/Tokenizer_test.cpp.s
+.PHONY : Tokenizer_test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -584,6 +621,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... runPackageTableTests"
 	@echo "... runPackageTests"
+	@echo "... runTokenizerTests"
 	@echo "... test"
 	@echo "... PackageTable_test.o"
 	@echo "... PackageTable_test.i"
@@ -591,6 +629,9 @@ help:
 	@echo "... Package_test.o"
 	@echo "... Package_test.i"
 	@echo "... Package_test.s"
+	@echo "... Tokenizer_test.o"
+	@echo "... Tokenizer_test.i"
+	@echo "... Tokenizer_test.s"
 .PHONY : help
 
 

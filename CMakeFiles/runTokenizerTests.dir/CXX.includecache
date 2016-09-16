@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ubuntu/proj/packageindex/Tokenizer.h
+string
+-
+sstream
+-
+vector
+-
+iostream
+-
+assert.h
+-
+
+/home/ubuntu/proj/packageindex/Tokenizer_test.cpp
+Tokenizer.h
+/home/ubuntu/proj/packageindex/Tokenizer.h
+memory
+-
+gtest/gtest.h
+-
+

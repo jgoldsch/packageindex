@@ -991,6 +991,41 @@ clean: CMakeFiles/runPackageTests.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/runTokenizerTests.dir
+
+# All Build rule for target.
+CMakeFiles/runTokenizerTests.dir/all:
+	$(MAKE) -f CMakeFiles/runTokenizerTests.dir/build.make CMakeFiles/runTokenizerTests.dir/depend
+	$(MAKE) -f CMakeFiles/runTokenizerTests.dir/build.make CMakeFiles/runTokenizerTests.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/proj/packageindex/CMakeFiles  3
+	@echo "Built target runTokenizerTests"
+.PHONY : CMakeFiles/runTokenizerTests.dir/all
+
+# Include target in all.
+all: CMakeFiles/runTokenizerTests.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/runTokenizerTests.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/proj/packageindex/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/runTokenizerTests.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/proj/packageindex/CMakeFiles 0
+.PHONY : CMakeFiles/runTokenizerTests.dir/rule
+
+# Convenience name for target.
+runTokenizerTests: CMakeFiles/runTokenizerTests.dir/rule
+.PHONY : runTokenizerTests
+
+# clean rule for target.
+CMakeFiles/runTokenizerTests.dir/clean:
+	$(MAKE) -f CMakeFiles/runTokenizerTests.dir/build.make CMakeFiles/runTokenizerTests.dir/clean
+.PHONY : CMakeFiles/runTokenizerTests.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/runTokenizerTests.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Special targets to cleanup operation of make.
 
 # Special rule to run CMake to check the build system integrity.

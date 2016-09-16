@@ -13,7 +13,7 @@ TEST(PackageTest, EmptyLookup) {
   ASSERT_EQ(p, nullptr);
 }
 
-TEST(PackageTest, SourceInsert) {
+TEST(PackageTableTest, SourceInsert) {
   auto PT = make_shared<PackageTable>();
   list<string> empty;
   int err = PT->insert("foo", empty);
@@ -24,7 +24,7 @@ TEST(PackageTest, SourceInsert) {
   ASSERT_EQ(p->getName(), "foo");
 }
 
-TEST(PackageTest, SourceInsertDup) {
+TEST(PackageTableTest, SourceInsertDup) {
   auto PT = make_shared<PackageTable>();
   list<string> empty;
   int err = PT->insert("foo", empty);
@@ -34,14 +34,14 @@ TEST(PackageTest, SourceInsertDup) {
   // XXX test fails ASSERT_EQ(err, 0);
 }
 
-TEST(PackageTest, InsertDependMissing) {
+TEST(PackageTableTest, InsertDependMissing) {
   auto PT = make_shared<PackageTable>();
   list<string> deps = {"bar"};
   int err = PT->insert("foo", deps);
   ASSERT_EQ(err, -1);
 }
 
-TEST(PackageTest, InsertDependsMet) {
+TEST(PackageTableTest, InsertDependsMet) {
   auto PT = make_shared<PackageTable>();
   list<string> deps;
   int err = PT->insert("bar", deps);
@@ -51,7 +51,7 @@ TEST(PackageTest, InsertDependsMet) {
   ASSERT_EQ(err, 0);
 }
 
-TEST(PackageTest, InsertUpdate) {
+TEST(PackageTableTest, InsertUpdate) {
   auto PT = make_shared<PackageTable>();
   list<string> deps;
   ASSERT_EQ(PT->insert("bar", deps), 0);
@@ -65,7 +65,7 @@ TEST(PackageTest, InsertUpdate) {
   // Graph foo->bar|baz
 }
 
-TEST(PackageTest, InsertUpdateCircular) {
+TEST(PackageTableTest, InsertUpdateCircular) {
   auto PT = make_shared<PackageTable>();
   list<string> deps;
   ASSERT_EQ(PT->insert("baz", deps), 0);
@@ -84,13 +84,13 @@ TEST(PackageTest, InsertUpdateCircular) {
 }
   
 
-TEST(PackageTest, RemoveMissing) {
+TEST(PackageTableTest, RemoveMissing) {
   auto PT = make_shared<PackageTable>();
   int err = PT->remove("foo");
   ASSERT_EQ(err, 0);
 }
 
-TEST(PackageTest, RemoveNotSink) {
+TEST(PackageTableTest, RemoveNotSink) {
   auto PT = make_shared<PackageTable>();
   list<string> deps;
   int err = PT->insert("bar", deps);
@@ -102,7 +102,7 @@ TEST(PackageTest, RemoveNotSink) {
   ASSERT_EQ(err, -1);
 }
 
-TEST(PackageTest, RemoveSinks) {
+TEST(PackageTableTest, RemoveSinks) {
   auto PT = make_shared<PackageTable>();
   list<string> deps;
   int err = PT->insert("bar", deps);
