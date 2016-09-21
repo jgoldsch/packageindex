@@ -7,3 +7,4 @@
 ADD_TEST(runPackageTests "runPackageTests")
 ADD_TEST(runPackageTableTests "runPackageTableTests")
 ADD_TEST(runTokenizerTests "runTokenizerTests")
+ADD_TEST(runRequestTests "runRequestTests")

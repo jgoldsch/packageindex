@@ -49,7 +49,7 @@ class PackageTable
 	if (depPackage->search(inPackage->getName()) != nullptr) {
 	  cout << "Circular dependency detected for package " << inPackage->getName() <<
 	    " and updated dependency " << depPackage->getName() << endl;
-	  return -1;
+	  return 1;
 	} else {
 	  myDeps.push_back(depPackage);
 	}
@@ -91,6 +91,7 @@ class PackageTable
   /**
    * Insert a package into the table if dependencies are met
    * returns 0 on success
+   * returns 1 on error, due to a circular dependency
    * returns -1 on failure, due to missing dependency
    */
   int insert(string inPackageStr, list<string> inDeps) {
@@ -129,6 +130,19 @@ class PackageTable
 
     return 0;
   }
+
+  int query(string inPackageStr) {
+    Package *queryPackage = lookup(inPackageStr);
+
+    if (queryPackage == nullptr) {
+      // Package is not indexed
+      return -1;
+    } else {
+      // Package is indexed
+      return 0;
+    }
+  }
+
 };
 
       

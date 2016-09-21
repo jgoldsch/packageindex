@@ -499,6 +499,19 @@ runPackageTests/fast:
 .PHONY : runPackageTests/fast
 
 #=============================================================================
+# Target rules for targets named runRequestTests
+
+# Build rule for target.
+runRequestTests: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 runRequestTests
+.PHONY : runRequestTests
+
+# fast build rule for target.
+runRequestTests/fast:
+	$(MAKE) -f CMakeFiles/runRequestTests.dir/build.make CMakeFiles/runRequestTests.dir/build
+.PHONY : runRequestTests/fast
+
+#=============================================================================
 # Target rules for targets named runTokenizerTests
 
 # Build rule for target.
@@ -558,6 +571,30 @@ Package_test.s: Package_test.cpp.s
 Package_test.cpp.s:
 	$(MAKE) -f CMakeFiles/runPackageTests.dir/build.make CMakeFiles/runPackageTests.dir/Package_test.cpp.s
 .PHONY : Package_test.cpp.s
+
+Request_test.o: Request_test.cpp.o
+.PHONY : Request_test.o
+
+# target to build an object file
+Request_test.cpp.o:
+	$(MAKE) -f CMakeFiles/runRequestTests.dir/build.make CMakeFiles/runRequestTests.dir/Request_test.cpp.o
+.PHONY : Request_test.cpp.o
+
+Request_test.i: Request_test.cpp.i
+.PHONY : Request_test.i
+
+# target to preprocess a source file
+Request_test.cpp.i:
+	$(MAKE) -f CMakeFiles/runRequestTests.dir/build.make CMakeFiles/runRequestTests.dir/Request_test.cpp.i
+.PHONY : Request_test.cpp.i
+
+Request_test.s: Request_test.cpp.s
+.PHONY : Request_test.s
+
+# target to generate assembly for a file
+Request_test.cpp.s:
+	$(MAKE) -f CMakeFiles/runRequestTests.dir/build.make CMakeFiles/runRequestTests.dir/Request_test.cpp.s
+.PHONY : Request_test.cpp.s
 
 Tokenizer_test.o: Tokenizer_test.cpp.o
 .PHONY : Tokenizer_test.o
@@ -621,6 +658,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... runPackageTableTests"
 	@echo "... runPackageTests"
+	@echo "... runRequestTests"
 	@echo "... runTokenizerTests"
 	@echo "... test"
 	@echo "... PackageTable_test.o"
@@ -629,6 +667,9 @@ help:
 	@echo "... Package_test.o"
 	@echo "... Package_test.i"
 	@echo "... Package_test.s"
+	@echo "... Request_test.o"
+	@echo "... Request_test.i"
+	@echo "... Request_test.s"
 	@echo "... Tokenizer_test.o"
 	@echo "... Tokenizer_test.i"
 	@echo "... Tokenizer_test.s"

@@ -78,5 +78,6 @@ SET(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/NightlyUpdate.dir/DependInfo.cmake"
   "CMakeFiles/runPackageTableTests.dir/DependInfo.cmake"
   "CMakeFiles/runPackageTests.dir/DependInfo.cmake"
+  "CMakeFiles/runRequestTests.dir/DependInfo.cmake"
   "CMakeFiles/runTokenizerTests.dir/DependInfo.cmake"
   )
