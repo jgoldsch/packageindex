@@ -1,17 +1,17 @@
-Start testing: Sep 15 00:19 UTC
+Start testing: Sep 23 20:28 UTC
 ----------------------------------------------------------
-1/2 Testing: runPackageTests
-1/2 Test: runPackageTests
+1/4 Testing: runPackageTests
+1/4 Test: runPackageTests
 Command: "/home/ubuntu/proj/packageindex/runPackageTests"
 Directory: /home/ubuntu/proj/packageindex
-"runPackageTests" start time: Sep 15 00:19 UTC
+"runPackageTests" start time: Sep 23 20:28 UTC
 Output:
 ----------------------------------------------------------
-[==========] Running 6 tests from 1 test case.
+[==========] Running 8 tests from 1 test case.
 [----------] Global test environment set-up.
-[----------] 6 tests from PackageTest
+[----------] 8 tests from PackageTest
 [ RUN      ] PackageTest.SourceNode
-[       OK ] PackageTest.SourceNode (1 ms)
+[       OK ] PackageTest.SourceNode (0 ms)
 [ RUN      ] PackageTest.SinkNode
 [       OK ] PackageTest.SinkNode (0 ms)
 [ RUN      ] PackageTest.AddDependency
@@ -22,44 +22,166 @@ Output:
 [       OK ] PackageTest.AddDependent (0 ms)
 [ RUN      ] PackageTest.RemoveDependency
 [       OK ] PackageTest.RemoveDependency (0 ms)
-[----------] 6 tests from PackageTest (1 ms total)
+[ RUN      ] PackageTest.SearchTest
+[       OK ] PackageTest.SearchTest (0 ms)
+[ RUN      ] PackageTest.DeepSearchTest
+[       OK ] PackageTest.DeepSearchTest (0 ms)
+[----------] 8 tests from PackageTest (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 6 tests from 1 test case ran. (1 ms total)
-[  PASSED  ] 6 tests.
+[==========] 8 tests from 1 test case ran. (0 ms total)
+[  PASSED  ] 8 tests.
 <end of output>
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"runPackageTests" end time: Sep 15 00:19 UTC
+"runPackageTests" end time: Sep 23 20:28 UTC
 "runPackageTests" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-2/2 Testing: runPackageTableTests
-2/2 Test: runPackageTableTests
+2/4 Testing: runPackageTableTests
+2/4 Test: runPackageTableTests
 Command: "/home/ubuntu/proj/packageindex/runPackageTableTests"
 Directory: /home/ubuntu/proj/packageindex
-"runPackageTableTests" start time: Sep 15 00:19 UTC
+"runPackageTableTests" start time: Sep 23 20:28 UTC
 Output:
 ----------------------------------------------------------
-[==========] Running 2 tests from 1 test case.
+[==========] Running 10 tests from 2 test cases.
 [----------] Global test environment set-up.
-[----------] 2 tests from PackageTest
+[----------] 1 test from PackageTest
 [ RUN      ] PackageTest.EmptyLookup
 [       OK ] PackageTest.EmptyLookup (0 ms)
-[ RUN      ] PackageTest.SourceInsert
-[       OK ] PackageTest.SourceInsert (0 ms)
-[----------] 2 tests from PackageTest (0 ms total)
+[----------] 1 test from PackageTest (0 ms total)
+
+[----------] 9 tests from PackageTableTest
+[ RUN      ] PackageTableTest.SourceInsert
+[       OK ] PackageTableTest.SourceInsert (0 ms)
+[ RUN      ] PackageTableTest.SourceInsertDup
+[       OK ] PackageTableTest.SourceInsertDup (0 ms)
+[ RUN      ] PackageTableTest.InsertDependMissing
+Missing dependency bar for package foo
+[       OK ] PackageTableTest.InsertDependMissing (0 ms)
+[ RUN      ] PackageTableTest.InsertDependsMet
+[       OK ] PackageTableTest.InsertDependsMet (0 ms)
+[ RUN      ] PackageTableTest.InsertUpdate
+[       OK ] PackageTableTest.InsertUpdate (0 ms)
+[ RUN      ] PackageTableTest.InsertUpdateCircular
+Circular dependency detected for package baz and updated dependency foo
+[       OK ] PackageTableTest.InsertUpdateCircular (0 ms)
+[ RUN      ] PackageTableTest.RemoveMissing
+[       OK ] PackageTableTest.RemoveMissing (0 ms)
+[ RUN      ] PackageTableTest.RemoveNotSink
+[       OK ] PackageTableTest.RemoveNotSink (0 ms)
+[ RUN      ] PackageTableTest.RemoveSinks
+Direct dependencies for foo
+bar
+Direct dependencies for bar
+[       OK ] PackageTableTest.RemoveSinks (0 ms)
+[----------] 9 tests from PackageTableTest (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 2 tests from 1 test case ran. (0 ms total)
-[  PASSED  ] 2 tests.
+[==========] 10 tests from 2 test cases ran. (0 ms total)
+[  PASSED  ] 10 tests.
 <end of output>
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"runPackageTableTests" end time: Sep 15 00:19 UTC
+"runPackageTableTests" end time: Sep 23 20:28 UTC
 "runPackageTableTests" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Sep 15 00:19 UTC
+3/4 Testing: runTokenizerTests
+3/4 Test: runTokenizerTests
+Command: "/home/ubuntu/proj/packageindex/runTokenizerTests"
+Directory: /home/ubuntu/proj/packageindex
+"runTokenizerTests" start time: Sep 23 20:28 UTC
+Output:
+----------------------------------------------------------
+[==========] Running 9 tests from 1 test case.
+[----------] Global test environment set-up.
+[----------] 9 tests from TokenizerTest
+[ RUN      ] TokenizerTest.TestEmpty
+Expected three tokens, got 0
+[       OK ] TokenizerTest.TestEmpty (0 ms)
+[ RUN      ] TokenizerTest.Toofew1
+Expected three tokens, got 1
+[       OK ] TokenizerTest.Toofew1 (0 ms)
+[ RUN      ] TokenizerTest.Toofew2
+Expected three tokens, got 2
+[       OK ] TokenizerTest.Toofew2 (0 ms)
+[ RUN      ] TokenizerTest.TooNoNewline
+Expected newline is missing at end of string: c
+[       OK ] TokenizerTest.TooNoNewline (0 ms)
+[ RUN      ] TokenizerTest.Onlynewline
+Expected three tokens, got 1
+[       OK ] TokenizerTest.Onlynewline (0 ms)
+[ RUN      ] TokenizerTest.Emptiesandnewline
+[       OK ] TokenizerTest.Emptiesandnewline (0 ms)
+[ RUN      ] TokenizerTest.GoodNodeps
+[       OK ] TokenizerTest.GoodNodeps (0 ms)
+[ RUN      ] TokenizerTest.GoodDep1
+[       OK ] TokenizerTest.GoodDep1 (0 ms)
+[ RUN      ] TokenizerTest.GoodDep2
+[       OK ] TokenizerTest.GoodDep2 (0 ms)
+[----------] 9 tests from TokenizerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 9 tests from 1 test case ran. (0 ms total)
+[  PASSED  ] 9 tests.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"runTokenizerTests" end time: Sep 23 20:28 UTC
+"runTokenizerTests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/4 Testing: runRequestTests
+4/4 Test: runRequestTests
+Command: "/home/ubuntu/proj/packageindex/runRequestTests"
+Directory: /home/ubuntu/proj/packageindex
+"runRequestTests" start time: Sep 23 20:28 UTC
+Output:
+----------------------------------------------------------
+[==========] Running 10 tests from 1 test case.
+[----------] Global test environment set-up.
+[----------] 10 tests from RequestTest
+[ RUN      ] RequestTest.RequestTokenFail
+Expected three tokens, got 1
+Thread id 47982635272512 string foo produced token parsing error
+[       OK ] RequestTest.RequestTokenFail (0 ms)
+[ RUN      ] RequestTest.RequestLizard
+[       OK ] RequestTest.RequestLizard (0 ms)
+[ RUN      ] RequestTest.RequestINDEXfail
+Missing dependency bar for package foo
+Missing dependency bar for package foo
+[       OK ] RequestTest.RequestINDEXfail (0 ms)
+[ RUN      ] RequestTest.RequestINDEXOK
+[       OK ] RequestTest.RequestINDEXOK (0 ms)
+[ RUN      ] RequestTest.RequestINDEXCircular
+Circular dependency detected for package bar and updated dependency foo
+[       OK ] RequestTest.RequestINDEXCircular (0 ms)
+[ RUN      ] RequestTest.RequestREMOVEmissing
+[       OK ] RequestTest.RequestREMOVEmissing (0 ms)
+[ RUN      ] RequestTest.RequestREMOVEOK
+[       OK ] RequestTest.RequestREMOVEOK (0 ms)
+[ RUN      ] RequestTest.RequestREMOVEFailDepends
+[       OK ] RequestTest.RequestREMOVEFailDepends (0 ms)
+[ RUN      ] RequestTest.RequestQUERYfail
+[       OK ] RequestTest.RequestQUERYfail (0 ms)
+[ RUN      ] RequestTest.RequestQUERYOK
+[       OK ] RequestTest.RequestQUERYOK (0 ms)
+[----------] 10 tests from RequestTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test case ran. (0 ms total)
+[  PASSED  ] 10 tests.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"runRequestTests" end time: Sep 23 20:28 UTC
+"runRequestTests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Sep 23 20:28 UTC

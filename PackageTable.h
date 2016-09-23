@@ -16,7 +16,6 @@ class PackageTable
   PackageTable() {}
   ~PackageTable() {
     m_table.clear();
-    // XXX delete Packages?
   }
 
   void print() {
@@ -24,8 +23,6 @@ class PackageTable
       Package *p = it->second;
       if (p != nullptr) {
 	p->printDependencies();
-      } else {
-	cout << "second is null" << endl;
       }
     }
   }

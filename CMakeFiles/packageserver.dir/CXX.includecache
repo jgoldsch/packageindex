@@ -60,14 +60,6 @@ mutex
 condition_variable
 -
 
-/home/ubuntu/proj/packageindex/Request_test.cpp
-Request.h
-/home/ubuntu/proj/packageindex/Request.h
-memory
--
-gtest/gtest.h
--
-
 /home/ubuntu/proj/packageindex/Tokenizer.h
 string
 -
@@ -79,4 +71,22 @@ iostream
 -
 assert.h
 -
+
+/home/ubuntu/proj/packageindex/server.cpp
+iostream
+-
+string
+-
+thread
+-
+sys/types.h
+-
+arpa/inet.h
+-
+sys/socket.h
+-
+string.h
+-
+Request.h
+/home/ubuntu/proj/packageindex/Request.h
 

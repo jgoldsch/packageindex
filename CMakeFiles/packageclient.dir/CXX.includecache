@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ubuntu/proj/packageindex/client.cpp
+iostream
+-
+unistd.h
+-
+sys/types.h
+-
+arpa/inet.h
+-
+sys/socket.h
+-
+string.h
+-
+string
+-
+

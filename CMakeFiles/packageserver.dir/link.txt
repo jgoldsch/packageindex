@@ -1,0 +1,1 @@
+/usr/bin/g++    -std=c++11 -g    CMakeFiles/packageserver.dir/server.cpp.o  -o packageserver -rdynamic -lpthread 

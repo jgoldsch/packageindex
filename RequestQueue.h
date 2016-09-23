@@ -1,9 +1,59 @@
-#include <list>
+#include <queue>
+#include <thread>
 #include <mutex>
 #include <condition_variable>
-
-using namespace std;
+ 
 
 class RequestQueue {
-  // workitem - socket descriptor?
-}
+
+  std::queue<int> m_queue;
+  std::mutex m_mutex;
+  std::condition_variable m_cond;
+
+ public:
+
+  RequestQueue() {}
+
+  ~RequestQueue() {
+  }
+
+  int pop()
+  {
+    std::unique_lock<std::mutex> lk(m_mutex);
+    while (m_queue.empty())
+      {
+	m_cond.wait(lk);
+      }
+    int item = m_queue.front();
+    m_queue.pop();
+    return item;
+  }
+ 
+  void pop(int& item)
+  {
+    std::unique_lock<std::mutex> lk(m_mutex);
+    while (m_queue.empty())
+      {
+	m_cond.wait(lk);
+      }
+    item = m_queue.front();
+    m_queue.pop();
+  }
+ 
+  void push(const int& item)
+  {
+    std::unique_lock<std::mutex> lk(m_mutex);
+    m_queue.push(item);
+    lk.unlock();
+    m_cond.notify_one();
+  }
+ 
+  void push(int&& item)
+  {
+    std::unique_lock<std::mutex> lk(m_mutex);
+    m_queue.push(std::move(item));
+    lk.unlock();
+    m_cond.notify_one();
+  }
+ 
+};

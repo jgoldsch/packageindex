@@ -80,7 +80,7 @@ TEST(PackageTableTest, InsertUpdateCircular) {
   deps.push_back("foo");
   // Try to add circular dependency like:
   // Graph foo->bar->baz->foo
-  ASSERT_EQ(PT->insert("baz", deps), -1);
+  ASSERT_EQ(PT->insert("baz", deps), 1);
 }
   
 

@@ -26,6 +26,8 @@
 /home/ubuntu/proj/packageindex/CMakeFiles/NightlySubmit.dir
 /home/ubuntu/proj/packageindex/CMakeFiles/NightlyTest.dir
 /home/ubuntu/proj/packageindex/CMakeFiles/NightlyUpdate.dir
+/home/ubuntu/proj/packageindex/CMakeFiles/packageclient.dir
+/home/ubuntu/proj/packageindex/CMakeFiles/packageserver.dir
 /home/ubuntu/proj/packageindex/CMakeFiles/runPackageTableTests.dir
 /home/ubuntu/proj/packageindex/CMakeFiles/runPackageTests.dir
 /home/ubuntu/proj/packageindex/CMakeFiles/runRequestTests.dir

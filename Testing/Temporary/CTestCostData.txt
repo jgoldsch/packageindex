@@ -1,3 +1,5 @@
-runPackageTests 2 0.000838995
-runPackageTableTests 1 0.0016048
+runPackageTests 8 0.000240743
+runPackageTableTests 3 0.000615676
+runTokenizerTests 6 0.000277162
+runRequestTests 6 0.000321666
 ---

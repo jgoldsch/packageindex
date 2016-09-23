@@ -1,0 +1,1 @@
+/usr/bin/g++    -std=c++11 -g    CMakeFiles/packageclient.dir/client.cpp.o  -o packageclient -rdynamic -lpthread 

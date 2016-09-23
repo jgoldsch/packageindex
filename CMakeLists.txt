@@ -15,6 +15,11 @@ add_executable(runTokenizerTests Tokenizer_test.cpp)
 target_link_libraries(runTokenizerTests ${GTEST_LIBRARIES} pthread)
 add_executable(runRequestTests Request_test.cpp)
 target_link_libraries(runRequestTests ${GTEST_LIBRARIES} pthread)
+add_executable(packageserver server.cpp)
+target_link_libraries(packageserver pthread)
+
+add_executable(packageclient client.cpp)
+target_link_libraries(packageclient pthread)
 
 add_test( runPackageTests runPackageTests )
 add_test( runPackageTableTests runPackageTableTests )

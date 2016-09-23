@@ -19,23 +19,17 @@ class Tokenizer
   string m_unparsed;
   Tokenized_t m_tokenized;
 
-private: 
-  void split(const string &s, char delim, vector<string> &elems) {
-    stringstream ss;
-    ss.str(s);
-    string item;
-    while (getline(ss, item, delim)) {
-      elems.push_back(item);
+private:
+
+  static void split(string input, char delim, vector<string> *items) {
+    istringstream ss(input);
+    string token;
+
+    while(std::getline(ss, token, delim)) {
+      items->push_back(token);
     }
   }
-
-
-  vector<string> split(const string &s, char delim) {
-    vector<string> elems;
-    split(s, delim, elems);
-    return elems;
-  }
-
+    
   /**
    * unparsed string is defined as such:
    * <command>|<package>|<dependencies>\n
@@ -51,7 +45,8 @@ private:
    * nullptr returned on parsing error
    */
   void tokenize() {
-    vector<string> items = split(m_unparsed, '|');
+    vector<string> items;
+    split(m_unparsed, '|', &items);
 
     if (items.size() != 3) {
       cout << "Expected three tokens, got " << items.size() << endl;
@@ -61,20 +56,19 @@ private:
     m_tokenized.m_command = items[0];
     m_tokenized.m_package = items[1];
 
-    string depends = items[2];
-
+    string depends(items[2]);
     // a newline character is expected as the last character
-    if (*(depends.end() - 1) != '\n') {
+    if (depends.back() != '\n') {
       m_tokenized.m_command = ""; // clear out the results and return;
       m_tokenized.m_package = ""; // clear out the results and return;
-      cout << "Expected newline is missing at end of string" << endl;
+      cout << "Expected newline is missing at end of string: " << depends << endl;
       return;
     } else {
       // remove newline character
       depends.pop_back();
-    }
+    }      
 
-    m_tokenized.m_dependencies = split(depends, ',');
+    split(depends, ',', &m_tokenized.m_dependencies);
   }
 
 public:

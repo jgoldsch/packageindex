@@ -76,6 +76,8 @@ SET(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/NightlySubmit.dir/DependInfo.cmake"
   "CMakeFiles/NightlyTest.dir/DependInfo.cmake"
   "CMakeFiles/NightlyUpdate.dir/DependInfo.cmake"
+  "CMakeFiles/packageclient.dir/DependInfo.cmake"
+  "CMakeFiles/packageserver.dir/DependInfo.cmake"
   "CMakeFiles/runPackageTableTests.dir/DependInfo.cmake"
   "CMakeFiles/runPackageTests.dir/DependInfo.cmake"
   "CMakeFiles/runRequestTests.dir/DependInfo.cmake"

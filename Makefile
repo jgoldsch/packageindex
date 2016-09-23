@@ -473,6 +473,32 @@ NightlyUpdate/fast:
 .PHONY : NightlyUpdate/fast
 
 #=============================================================================
+# Target rules for targets named packageclient
+
+# Build rule for target.
+packageclient: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 packageclient
+.PHONY : packageclient
+
+# fast build rule for target.
+packageclient/fast:
+	$(MAKE) -f CMakeFiles/packageclient.dir/build.make CMakeFiles/packageclient.dir/build
+.PHONY : packageclient/fast
+
+#=============================================================================
+# Target rules for targets named packageserver
+
+# Build rule for target.
+packageserver: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 packageserver
+.PHONY : packageserver
+
+# fast build rule for target.
+packageserver/fast:
+	$(MAKE) -f CMakeFiles/packageserver.dir/build.make CMakeFiles/packageserver.dir/build
+.PHONY : packageserver/fast
+
+#=============================================================================
 # Target rules for targets named runPackageTableTests
 
 # Build rule for target.
@@ -620,6 +646,54 @@ Tokenizer_test.cpp.s:
 	$(MAKE) -f CMakeFiles/runTokenizerTests.dir/build.make CMakeFiles/runTokenizerTests.dir/Tokenizer_test.cpp.s
 .PHONY : Tokenizer_test.cpp.s
 
+client.o: client.cpp.o
+.PHONY : client.o
+
+# target to build an object file
+client.cpp.o:
+	$(MAKE) -f CMakeFiles/packageclient.dir/build.make CMakeFiles/packageclient.dir/client.cpp.o
+.PHONY : client.cpp.o
+
+client.i: client.cpp.i
+.PHONY : client.i
+
+# target to preprocess a source file
+client.cpp.i:
+	$(MAKE) -f CMakeFiles/packageclient.dir/build.make CMakeFiles/packageclient.dir/client.cpp.i
+.PHONY : client.cpp.i
+
+client.s: client.cpp.s
+.PHONY : client.s
+
+# target to generate assembly for a file
+client.cpp.s:
+	$(MAKE) -f CMakeFiles/packageclient.dir/build.make CMakeFiles/packageclient.dir/client.cpp.s
+.PHONY : client.cpp.s
+
+server.o: server.cpp.o
+.PHONY : server.o
+
+# target to build an object file
+server.cpp.o:
+	$(MAKE) -f CMakeFiles/packageserver.dir/build.make CMakeFiles/packageserver.dir/server.cpp.o
+.PHONY : server.cpp.o
+
+server.i: server.cpp.i
+.PHONY : server.i
+
+# target to preprocess a source file
+server.cpp.i:
+	$(MAKE) -f CMakeFiles/packageserver.dir/build.make CMakeFiles/packageserver.dir/server.cpp.i
+.PHONY : server.cpp.i
+
+server.s: server.cpp.s
+.PHONY : server.s
+
+# target to generate assembly for a file
+server.cpp.s:
+	$(MAKE) -f CMakeFiles/packageserver.dir/build.make CMakeFiles/packageserver.dir/server.cpp.s
+.PHONY : server.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -655,6 +729,8 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... edit_cache"
+	@echo "... packageclient"
+	@echo "... packageserver"
 	@echo "... rebuild_cache"
 	@echo "... runPackageTableTests"
 	@echo "... runPackageTests"
@@ -673,6 +749,12 @@ help:
 	@echo "... Tokenizer_test.o"
 	@echo "... Tokenizer_test.i"
 	@echo "... Tokenizer_test.s"
+	@echo "... client.o"
+	@echo "... client.i"
+	@echo "... client.s"
+	@echo "... server.o"
+	@echo "... server.i"
+	@echo "... server.s"
 .PHONY : help
 
 
