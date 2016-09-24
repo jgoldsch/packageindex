@@ -2,10 +2,6 @@
 #include <list>
 #include <iostream>
 
-#ifndef NDEBUG
-#define NDEBUG
-#endif	/* NDEBUG */
-
 using namespace std;
 
 class Package

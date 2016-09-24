@@ -11,10 +11,6 @@
 #include "PackageTable.h"
 #include "RequestQueue.h"
 
-#ifndef NDEBUG
-#define NDEBUG
-#endif	/* !NDEBUG */
-
 using namespace std;
 
 class RequestHandler {

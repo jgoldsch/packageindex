@@ -4,10 +4,6 @@
 #include <mutex>
 #include <assert.h>
 
-#ifndef NDEBUG
-#define NDEBUG
-#endif	/* NDEBUG */
-
 using namespace std;
 
 class PackageTable
