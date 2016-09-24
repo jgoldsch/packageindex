@@ -525,6 +525,19 @@ runPackageTests/fast:
 .PHONY : runPackageTests/fast
 
 #=============================================================================
+# Target rules for targets named runRequestQueueTests
+
+# Build rule for target.
+runRequestQueueTests: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 runRequestQueueTests
+.PHONY : runRequestQueueTests
+
+# fast build rule for target.
+runRequestQueueTests/fast:
+	$(MAKE) -f CMakeFiles/runRequestQueueTests.dir/build.make CMakeFiles/runRequestQueueTests.dir/build
+.PHONY : runRequestQueueTests/fast
+
+#=============================================================================
 # Target rules for targets named runRequestTests
 
 # Build rule for target.
@@ -597,6 +610,30 @@ Package_test.s: Package_test.cpp.s
 Package_test.cpp.s:
 	$(MAKE) -f CMakeFiles/runPackageTests.dir/build.make CMakeFiles/runPackageTests.dir/Package_test.cpp.s
 .PHONY : Package_test.cpp.s
+
+RequestQueue_test.o: RequestQueue_test.cpp.o
+.PHONY : RequestQueue_test.o
+
+# target to build an object file
+RequestQueue_test.cpp.o:
+	$(MAKE) -f CMakeFiles/runRequestQueueTests.dir/build.make CMakeFiles/runRequestQueueTests.dir/RequestQueue_test.cpp.o
+.PHONY : RequestQueue_test.cpp.o
+
+RequestQueue_test.i: RequestQueue_test.cpp.i
+.PHONY : RequestQueue_test.i
+
+# target to preprocess a source file
+RequestQueue_test.cpp.i:
+	$(MAKE) -f CMakeFiles/runRequestQueueTests.dir/build.make CMakeFiles/runRequestQueueTests.dir/RequestQueue_test.cpp.i
+.PHONY : RequestQueue_test.cpp.i
+
+RequestQueue_test.s: RequestQueue_test.cpp.s
+.PHONY : RequestQueue_test.s
+
+# target to generate assembly for a file
+RequestQueue_test.cpp.s:
+	$(MAKE) -f CMakeFiles/runRequestQueueTests.dir/build.make CMakeFiles/runRequestQueueTests.dir/RequestQueue_test.cpp.s
+.PHONY : RequestQueue_test.cpp.s
 
 Request_test.o: Request_test.cpp.o
 .PHONY : Request_test.o
@@ -734,6 +771,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... runPackageTableTests"
 	@echo "... runPackageTests"
+	@echo "... runRequestQueueTests"
 	@echo "... runRequestTests"
 	@echo "... runTokenizerTests"
 	@echo "... test"
@@ -743,6 +781,9 @@ help:
 	@echo "... Package_test.o"
 	@echo "... Package_test.i"
 	@echo "... Package_test.s"
+	@echo "... RequestQueue_test.o"
+	@echo "... RequestQueue_test.i"
+	@echo "... RequestQueue_test.s"
 	@echo "... Request_test.o"
 	@echo "... Request_test.i"
 	@echo "... Request_test.s"

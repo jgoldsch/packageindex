@@ -30,5 +30,6 @@
 /home/ubuntu/proj/packageindex/CMakeFiles/packageserver.dir
 /home/ubuntu/proj/packageindex/CMakeFiles/runPackageTableTests.dir
 /home/ubuntu/proj/packageindex/CMakeFiles/runPackageTests.dir
+/home/ubuntu/proj/packageindex/CMakeFiles/runRequestQueueTests.dir
 /home/ubuntu/proj/packageindex/CMakeFiles/runRequestTests.dir
 /home/ubuntu/proj/packageindex/CMakeFiles/runTokenizerTests.dir

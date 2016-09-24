@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ubuntu/proj/packageindex/RequestQueue.h
+queue
+-
+mutex
+-
+condition_variable
+-
+
+/home/ubuntu/proj/packageindex/RequestQueue_test.cpp
+RequestQueue.h
+/home/ubuntu/proj/packageindex/RequestQueue.h
+memory
+-
+gtest/gtest.h
+-
+

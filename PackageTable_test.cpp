@@ -31,7 +31,7 @@ TEST(PackageTableTest, SourceInsertDup) {
   ASSERT_EQ(err, 0);
 
   err = PT->insert("foo", empty);
-  // XXX test fails ASSERT_EQ(err, 0);
+  ASSERT_EQ(err, 0);
 }
 
 TEST(PackageTableTest, InsertDependMissing) {

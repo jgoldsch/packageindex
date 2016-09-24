@@ -2,6 +2,10 @@
 #include <list>
 #include <iostream>
 
+#ifndef NDEBUG
+#define NDEBUG
+#endif	/* NDEBUG */
+
 using namespace std;
 
 class Package
@@ -62,7 +66,6 @@ class Package
   }
 
   int addDependent(Package *inP) {
-    // XXX test for circular dependency
     m_dependents.push_back(inP);
     return 0;
   }

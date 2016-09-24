@@ -1,5 +1,4 @@
 #include <queue>
-#include <thread>
 #include <mutex>
 #include <condition_variable>
  
@@ -14,8 +13,7 @@ class RequestQueue {
 
   RequestQueue() {}
 
-  ~RequestQueue() {
-  }
+  ~RequestQueue() {}
 
   int pop()
   {
@@ -29,17 +27,6 @@ class RequestQueue {
     return item;
   }
  
-  void pop(int& item)
-  {
-    std::unique_lock<std::mutex> lk(m_mutex);
-    while (m_queue.empty())
-      {
-	m_cond.wait(lk);
-      }
-    item = m_queue.front();
-    m_queue.pop();
-  }
- 
   void push(const int& item)
   {
     std::unique_lock<std::mutex> lk(m_mutex);
@@ -47,13 +34,4 @@ class RequestQueue {
     lk.unlock();
     m_cond.notify_one();
   }
- 
-  void push(int&& item)
-  {
-    std::unique_lock<std::mutex> lk(m_mutex);
-    m_queue.push(std::move(item));
-    lk.unlock();
-    m_cond.notify_one();
-  }
- 
 };

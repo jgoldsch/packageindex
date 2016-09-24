@@ -10,46 +10,30 @@ using namespace std;
 
 int main()
 {
-  int clifd;
-  clifd=socket(AF_INET,SOCK_STREAM, IPPROTO_TCP);
+  int client_fd = socket(AF_INET, SOCK_STREAM, 0);
+
   sockaddr_in serv;
   bzero(&serv, sizeof(serv));
   serv.sin_family=AF_INET;
   serv.sin_port=htons(8080);
   inet_aton("127.0.0.1", &(serv.sin_addr));
 
-  connect(clifd, (sockaddr*)(&serv), sizeof(serv));//blocking call
-  int n,m;
-  char data[100];
-  char recvd[100];
-  for(;;)
-    {
-      fgets(data, 100,stdin );
-      n=strlen(data);
-      cout<<"You have written "<<n<<endl;
-
-      if(n>0)
-        {
-	  while(n>0)
-            {  
-	      m=write(clifd,data,n);
-	      n=n-m;
-            }
-        }
-
-      n=read(clifd, recvd, 100);
-      string resp(recvd);
-      cout<<"Server echoed back "<< resp <<endl;
-
-      if(n>0)
-        {
-	  while(n>0)
-            {
-	      m=fputs(data,stdout);
-	      fflush(stdout);
-	      n=n-m;
-            }
-	  //cout<<data<<endl;
-        }
+  connect(client_fd, (sockaddr*)(&serv), sizeof(serv));
+  int n, m;
+  char data[256];
+  char recvd[256];
+  while (1) {
+    fgets(data, 256, stdin);
+    n = strlen(data);
+    while(n > 0) {  
+      m = write(client_fd, data, n);
+      n = n - m;
     }
+
+    n = read(client_fd, recvd, 100);
+    string resp(recvd);
+    
+    cout << "package server response is " << resp << endl;
+
+  }
 }

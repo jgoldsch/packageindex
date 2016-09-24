@@ -63,7 +63,7 @@ TEST(TokenizerTest, GoodDep1) {
   ASSERT_NE(result, nullptr);
   ASSERT_EQ(result->m_command, "a");
   ASSERT_EQ(result->m_package, "b");
-  ASSERT_EQ(result->m_dependencies[0], "c");
+  ASSERT_EQ(result->m_dependencies.front(), "c");
 }
 
 TEST(TokenizerTest, GoodDep2) {
@@ -73,8 +73,9 @@ TEST(TokenizerTest, GoodDep2) {
   ASSERT_NE(result, nullptr);
   ASSERT_EQ(result->m_command, "a");
   ASSERT_EQ(result->m_package, "b");
-  ASSERT_EQ(result->m_dependencies[0], "c");
-  ASSERT_EQ(result->m_dependencies[1], "d");
+  ASSERT_EQ(result->m_dependencies.front(), "c");
+  result->m_dependencies.pop_front();
+  ASSERT_EQ(result->m_dependencies.front(), "d");
 }
 
 

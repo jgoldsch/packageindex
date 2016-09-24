@@ -1,10 +1,10 @@
-Start testing: Sep 23 20:28 UTC
+Start testing: Sep 24 03:12 UTC
 ----------------------------------------------------------
-1/4 Testing: runPackageTests
-1/4 Test: runPackageTests
+1/5 Testing: runPackageTests
+1/5 Test: runPackageTests
 Command: "/home/ubuntu/proj/packageindex/runPackageTests"
 Directory: /home/ubuntu/proj/packageindex
-"runPackageTests" start time: Sep 23 20:28 UTC
+"runPackageTests" start time: Sep 24 03:12 UTC
 Output:
 ----------------------------------------------------------
 [==========] Running 8 tests from 1 test case.
@@ -35,15 +35,15 @@ Output:
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"runPackageTests" end time: Sep 23 20:28 UTC
+"runPackageTests" end time: Sep 24 03:12 UTC
 "runPackageTests" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-2/4 Testing: runPackageTableTests
-2/4 Test: runPackageTableTests
+2/5 Testing: runPackageTableTests
+2/5 Test: runPackageTableTests
 Command: "/home/ubuntu/proj/packageindex/runPackageTableTests"
 Directory: /home/ubuntu/proj/packageindex
-"runPackageTableTests" start time: Sep 23 20:28 UTC
+"runPackageTableTests" start time: Sep 24 03:12 UTC
 Output:
 ----------------------------------------------------------
 [==========] Running 10 tests from 2 test cases.
@@ -59,7 +59,6 @@ Output:
 [ RUN      ] PackageTableTest.SourceInsertDup
 [       OK ] PackageTableTest.SourceInsertDup (0 ms)
 [ RUN      ] PackageTableTest.InsertDependMissing
-Missing dependency bar for package foo
 [       OK ] PackageTableTest.InsertDependMissing (0 ms)
 [ RUN      ] PackageTableTest.InsertDependsMet
 [       OK ] PackageTableTest.InsertDependsMet (0 ms)
@@ -86,34 +85,29 @@ Direct dependencies for bar
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"runPackageTableTests" end time: Sep 23 20:28 UTC
+"runPackageTableTests" end time: Sep 24 03:12 UTC
 "runPackageTableTests" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-3/4 Testing: runTokenizerTests
-3/4 Test: runTokenizerTests
+3/5 Testing: runTokenizerTests
+3/5 Test: runTokenizerTests
 Command: "/home/ubuntu/proj/packageindex/runTokenizerTests"
 Directory: /home/ubuntu/proj/packageindex
-"runTokenizerTests" start time: Sep 23 20:28 UTC
+"runTokenizerTests" start time: Sep 24 03:12 UTC
 Output:
 ----------------------------------------------------------
 [==========] Running 9 tests from 1 test case.
 [----------] Global test environment set-up.
 [----------] 9 tests from TokenizerTest
 [ RUN      ] TokenizerTest.TestEmpty
-Expected three tokens, got 0
 [       OK ] TokenizerTest.TestEmpty (0 ms)
 [ RUN      ] TokenizerTest.Toofew1
-Expected three tokens, got 1
 [       OK ] TokenizerTest.Toofew1 (0 ms)
 [ RUN      ] TokenizerTest.Toofew2
-Expected three tokens, got 2
 [       OK ] TokenizerTest.Toofew2 (0 ms)
 [ RUN      ] TokenizerTest.TooNoNewline
-Expected newline is missing at end of string: c
 [       OK ] TokenizerTest.TooNoNewline (0 ms)
 [ RUN      ] TokenizerTest.Onlynewline
-Expected three tokens, got 1
 [       OK ] TokenizerTest.Onlynewline (0 ms)
 [ RUN      ] TokenizerTest.Emptiesandnewline
 [       OK ] TokenizerTest.Emptiesandnewline (0 ms)
@@ -132,29 +126,25 @@ Expected three tokens, got 1
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"runTokenizerTests" end time: Sep 23 20:28 UTC
+"runTokenizerTests" end time: Sep 24 03:12 UTC
 "runTokenizerTests" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-4/4 Testing: runRequestTests
-4/4 Test: runRequestTests
+4/5 Testing: runRequestTests
+4/5 Test: runRequestTests
 Command: "/home/ubuntu/proj/packageindex/runRequestTests"
 Directory: /home/ubuntu/proj/packageindex
-"runRequestTests" start time: Sep 23 20:28 UTC
+"runRequestTests" start time: Sep 24 03:12 UTC
 Output:
 ----------------------------------------------------------
 [==========] Running 10 tests from 1 test case.
 [----------] Global test environment set-up.
 [----------] 10 tests from RequestTest
 [ RUN      ] RequestTest.RequestTokenFail
-Expected three tokens, got 1
-Thread id 47982635272512 string foo produced token parsing error
 [       OK ] RequestTest.RequestTokenFail (0 ms)
 [ RUN      ] RequestTest.RequestLizard
 [       OK ] RequestTest.RequestLizard (0 ms)
 [ RUN      ] RequestTest.RequestINDEXfail
-Missing dependency bar for package foo
-Missing dependency bar for package foo
 [       OK ] RequestTest.RequestINDEXfail (0 ms)
 [ RUN      ] RequestTest.RequestINDEXOK
 [       OK ] RequestTest.RequestINDEXOK (0 ms)
@@ -180,8 +170,35 @@ Circular dependency detected for package bar and updated dependency foo
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"runRequestTests" end time: Sep 23 20:28 UTC
+"runRequestTests" end time: Sep 24 03:12 UTC
 "runRequestTests" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Sep 23 20:28 UTC
+5/5 Testing: runRequestQueueTests
+5/5 Test: runRequestQueueTests
+Command: "/home/ubuntu/proj/packageindex/runRequestQueueTests"
+Directory: /home/ubuntu/proj/packageindex
+"runRequestQueueTests" start time: Sep 24 03:12 UTC
+Output:
+----------------------------------------------------------
+[==========] Running 2 tests from 1 test case.
+[----------] Global test environment set-up.
+[----------] 2 tests from RequestQueueTest
+[ RUN      ] RequestQueueTest.TestPush1
+[       OK ] RequestQueueTest.TestPush1 (0 ms)
+[ RUN      ] RequestQueueTest.TestPush3
+[       OK ] RequestQueueTest.TestPush3 (0 ms)
+[----------] 2 tests from RequestQueueTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 2 tests from 1 test case ran. (0 ms total)
+[  PASSED  ] 2 tests.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"runRequestQueueTests" end time: Sep 24 03:12 UTC
+"runRequestQueueTests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Sep 24 03:12 UTC

@@ -1,17 +1,19 @@
 #include "Package.h"
 #include <unordered_map>
 #include <list>
+#include <mutex>
 #include <assert.h>
 
-//#define NDEBUG
+#ifndef NDEBUG
+#define NDEBUG
+#endif	/* NDEBUG */
 
 using namespace std;
 
 class PackageTable
 {
-
   unordered_map<string, Package *> m_table;
-
+  std::mutex m_lock;
  public:
   PackageTable() {}
   ~PackageTable() {
@@ -19,6 +21,7 @@ class PackageTable
   }
 
   void print() {
+    std::lock_guard<std::mutex> lock(m_lock);
     for (auto it = m_table.begin(); it != m_table.end(); ++it) {
       Package *p = it->second;
       if (p != nullptr) {
@@ -39,7 +42,9 @@ class PackageTable
       Package * depPackage = lookup(dep);
       if (depPackage == nullptr) {
 	// missing dependency, return error
+#ifndef NDEBUG
 	cout << "Missing dependency " << dep << " for package " << inPackage->getName() << endl;
+#endif	/* !NDEBUG */
 	return -1;
       } else {
 	// Check for circular dependency
@@ -67,11 +72,12 @@ class PackageTable
       Package * depPackage = lookup(dep);
       if (depPackage == nullptr) {
 	// missing dependency, return error
+#ifndef NDEBUG
 	cout << "Missing dependency " << dep << " for package " << inPackage->getName() << endl;
+#endif	/* !NDEBUG */
 	delete inPackage;
 	return -1;
       } else {
-	// ASSERT no dup dependencies?
 	myDeps.push_back(depPackage);
       }
     }
@@ -93,6 +99,7 @@ class PackageTable
    */
   int insert(string inPackageStr, list<string> inDeps) {
     int err;
+    std::lock_guard<std::mutex> lock(m_lock);
     Package *myPackage = lookup(inPackageStr);
     if (myPackage != nullptr) {
       // This is an update of an existing package and needs to be handled differently
@@ -106,8 +113,8 @@ class PackageTable
   }
 
   int remove(string inPackageStr) {
-    Package *remPackage = m_table[inPackageStr];
-
+    std::lock_guard<std::mutex> lock(m_lock);
+    Package *remPackage = lookup(inPackageStr);
     if (remPackage == nullptr) {
 	// removing a package that doesn't exist is a noop
 	return 0;
@@ -129,6 +136,7 @@ class PackageTable
   }
 
   int query(string inPackageStr) {
+    std::lock_guard<std::mutex> lock(m_lock);
     Package *queryPackage = lookup(inPackageStr);
 
     if (queryPackage == nullptr) {

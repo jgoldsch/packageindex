@@ -1,8 +1,12 @@
 #include <string>
 #include <sstream>
-#include <vector>
+#include <list>
 #include <iostream>
 #include <assert.h>
+
+#ifndef NDEBUG
+#define NDEBUG
+#endif	/* !NDEBUG */
 
 using namespace std;
 
@@ -10,7 +14,7 @@ using namespace std;
 typedef struct Tokenized {
   string m_command;
   string m_package;
-  vector<string> m_dependencies;
+  list<string> m_dependencies;
 } Tokenized_t;
 
 
@@ -21,7 +25,7 @@ class Tokenizer
 
 private:
 
-  static void split(string input, char delim, vector<string> *items) {
+  static void split(string input, char delim, list<string> *items) {
     istringstream ss(input);
     string token;
 
@@ -34,39 +38,46 @@ private:
    * unparsed string is defined as such:
    * <command>|<package>|<dependencies>\n
    * Where <command> and <package> are a single string and
-   * <dependencies> is a comma delimeted vector.
+   * <dependencies> is a comma delimeted list.
    * The tokenize method will perform the following:
    * 1) verify input is valid
    * 2) split items by '|' delimeter - will always produce three strings, when valid
    * 3) ensure mandatory fields are present
-   * 4) split, if optional dependencies are present, dependencies into a vector, using comma as a delimeter.
+   * 4) split, if optional dependencies are present, dependencies into a list, using comma as a delimeter.
    *
    * tokenized result is return
    * nullptr returned on parsing error
    */
   void tokenize() {
-    vector<string> items;
+    list<string> items;
     split(m_unparsed, '|', &items);
 
     if (items.size() != 3) {
+#ifndef NDEBUG
       cout << "Expected three tokens, got " << items.size() << endl;
+#endif	/* NDEBUG */
       return;
     }
 
-    m_tokenized.m_command = items[0];
-    m_tokenized.m_package = items[1];
+    m_tokenized.m_command = items.front();
+    items.pop_front();
+    m_tokenized.m_package = items.front();
+    items.pop_front();
 
-    string depends(items[2]);
+    string depends(items.front());
+    items.pop_front();
     // a newline character is expected as the last character
     if (depends.back() != '\n') {
       m_tokenized.m_command = ""; // clear out the results and return;
       m_tokenized.m_package = ""; // clear out the results and return;
+#ifndef NDEBUG
       cout << "Expected newline is missing at end of string: " << depends << endl;
+#endif	/* !NDEBUG */
       return;
     } else {
       // remove newline character
       depends.pop_back();
-    }      
+    }
 
     split(depends, ',', &m_tokenized.m_dependencies);
   }

@@ -4,16 +4,33 @@
 #include <sys/types.h>
 #include <arpa/inet.h>
 #include <sys/socket.h>
+#include <signal.h>
 #include <string.h>
 #include "Request.h"
 
+static int volatile signaled = 0;
+
+void sighandler(int sig, siginfo_t *siginfo, void *context) {
+  signaled = 1;
+}
+
+void install_sig_hooks() {
+  struct sigaction action;
+  memset(&action, 0, sizeof(struct sigaction));
+  action.sa_sigaction = sighandler;
+  action.sa_flags     = SA_SIGINFO;
+  sigaction(SIGINT, &action, NULL);
+}
 
 int main(int argc, char** argv)
 {
-  int workers = 10;
+  int workers = 100;
   int port = 8080;
   int backlog = 100;
   string ip;
+  std::vector<std::thread *> workerspool;
+
+  install_sig_hooks();
 
   if (argc == 2) {
     workers = atoi(argv[1]);
@@ -25,8 +42,9 @@ int main(int argc, char** argv)
   RequestQueue *RQ = new RequestQueue();
 
   for (int i = 0; i < workers; i++) {
-    std::thread worker(&RequestHandler::handleRequests, RequestHandler(PT, RQ));
-    worker.detach();
+    std::thread *worker = new std::thread(&RequestHandler::handleRequests, RequestHandler(PT, RQ));
+
+    workerspool.push_back(worker);
   }
  
   int listen_sd = socket(PF_INET, SOCK_STREAM, 0);
@@ -56,7 +74,7 @@ int main(int argc, char** argv)
   }
 
   // Add a work item to the queue for each connection
-  while (1) {
+  while (!signaled) {
     int accept_sd = accept(listen_sd, (struct sockaddr*)&address, &socklen);
     if (accept_sd < 0) {
       // XXX add debug info
@@ -66,8 +84,7 @@ int main(int argc, char** argv)
 
     RQ->push(accept_sd);
   }
- 
-  // not reached
+  cout << "exiting" << endl;
   delete PT;
   delete RQ;
   exit(0);

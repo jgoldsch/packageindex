@@ -21,13 +21,13 @@ unordered_map
 -
 list
 -
+mutex
+-
 assert.h
 -
 
 /home/ubuntu/proj/packageindex/Request.h
 string
--
-vector
 -
 memory
 -
@@ -43,6 +43,8 @@ sys/socket.h
 -
 strings.h
 -
+thread
+-
 Tokenizer.h
 /home/ubuntu/proj/packageindex/Tokenizer.h
 PackageTable.h
@@ -52,8 +54,6 @@ RequestQueue.h
 
 /home/ubuntu/proj/packageindex/RequestQueue.h
 queue
--
-thread
 -
 mutex
 -
@@ -65,7 +65,7 @@ string
 -
 sstream
 -
-vector
+list
 -
 iostream
 -
@@ -84,6 +84,8 @@ sys/types.h
 arpa/inet.h
 -
 sys/socket.h
+-
+signal.h
 -
 string.h
 -
